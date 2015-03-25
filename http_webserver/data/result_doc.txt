@@ -1,0 +1,129 @@
+This is ApacheBench, Version 2.0.40-dev <$Revision: 1.146 $> apache-2.0
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Copyright 2006 The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 10.58.119.130 (be patient)
+
+
+Server Software:        
+Server Hostname:        10.58.119.130
+Server Port:            6868
+
+Document Path:          /index.doc
+Document Length:        32768 bytes
+
+Concurrency Level:      500
+Time taken for tests:   1.385192 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      328180000 bytes
+HTML transferred:       327680000 bytes
+Requests per second:    7219.22 [#/sec] (mean)
+Time per request:       69.260 [ms] (mean)
+Time per request:       0.139 [ms] (mean, across all concurrent requests)
+Transfer rate:          231367.20 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   2.4      0      19
+Processing:     4   66   9.7     68      74
+Waiting:        2   66   9.9     68      74
+Total:          6   66   7.8     68      74
+
+Percentage of the requests served within a certain time (ms)
+  50%     68
+  66%     69
+  75%     70
+  80%     70
+  90%     71
+  95%     71
+  98%     72
+  99%     72
+ 100%     74 (longest request)
+This is ApacheBench, Version 2.0.40-dev <$Revision: 1.146 $> apache-2.0
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Copyright 2006 The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 10.58.119.130 (be patient)
+
+
+Server Software:        
+Server Hostname:        10.58.119.130
+Server Port:            6868
+
+Document Path:          /index.doc
+Document Length:        32768 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   1.424731 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      328180000 bytes
+HTML transferred:       327680000 bytes
+Requests per second:    7018.87 [#/sec] (mean)
+Time per request:       142.473 [ms] (mean)
+Time per request:       0.142 [ms] (mean, across all concurrent requests)
+Transfer rate:          224946.33 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   6.8      0      38
+Processing:     7  132  27.1    141     150
+Waiting:        3  131  27.5    141     150
+Total:         15  134  22.8    141     150
+
+Percentage of the requests served within a certain time (ms)
+  50%    141
+  66%    141
+  75%    142
+  80%    142
+  90%    145
+  95%    148
+  98%    148
+  99%    149
+ 100%    150 (longest request)
+This is ApacheBench, Version 2.0.40-dev <$Revision: 1.146 $> apache-2.0
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Copyright 2006 The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 10.58.119.130 (be patient)
+
+
+Server Software:        
+Server Hostname:        10.58.119.130
+Server Port:            6868
+
+Document Path:          /index.doc
+Document Length:        32768 bytes
+
+Concurrency Level:      2000
+Time taken for tests:   1.444772 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      328180000 bytes
+HTML transferred:       327680000 bytes
+Requests per second:    6921.51 [#/sec] (mean)
+Time per request:       288.954 [ms] (mean)
+Time per request:       0.144 [ms] (mean, across all concurrent requests)
+Transfer rate:          221826.00 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    8  20.5      0      83
+Processing:    30  247  72.4    281     293
+Waiting:       24  247  73.6    281     293
+Total:         40  256  57.7    281     293
+
+Percentage of the requests served within a certain time (ms)
+  50%    281
+  66%    283
+  75%    286
+  80%    287
+  90%    289
+  95%    289
+  98%    289
+  99%    290
+ 100%    293 (longest request)
