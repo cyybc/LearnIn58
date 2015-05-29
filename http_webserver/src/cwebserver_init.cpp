@@ -3,7 +3,7 @@
 void CWebServer::Init()
 {
     m_log_id = 0;
-    m_no_client = new(client_information);
+    m_no_client = (client_information*)malloc(sizeof(client_information));
     m_no_client->sockfd = -1;
     m_no_client->log_id = -1;
     TestValueError(m_no_client, false, 0 == pthread_rwlock_init(&m_error_rwlock, NULL), "error rwlock init error");

@@ -12,17 +12,17 @@ message_package* CWebServer::DealData(client_information* pclient, int recv_len,
     {
         now += 3;
     }
-    else if (now + 4 < recv_len && TestWord(pclient, 4, "Post ", &precv_buff[now]))
+    else if (now + 4 < recv_len && TestWord(pclient, 5, "Post ", &precv_buff[now]))
     {
         now += 4;
     }
-    else if (now + 4 < recv_len && TestWord(pclient, 4, "Head ", &precv_buff[now]))
+    else if (now + 4 < recv_len && TestWord(pclient, 5, "Head ", &precv_buff[now]))
     {
         now += 4;
     }
     else  
     {
-        //PrintDebug(pclient, "Not Get or Post or Head");
+        PrintDebug(pclient, "Not Get or Post or Head");
         return CWebServer::CombineErrorPackage(pclient, BADREQUEST); 
     }
 
@@ -45,7 +45,7 @@ message_package* CWebServer::DealData(client_information* pclient, int recv_len,
         return CWebServer::CombineErrorPackage(pclient, BADREQUEST); 
     }
     url_len = next - now + CHANGEURLLEN;
-    purl = (char *)malloc(url_len);
+    purl = (char *)malloc(url_len + 1);
     TestValueError(pclient, true, NULL == purl, "url memory alloc error");
     for (int i = 0; i < CHANGEURLLEN; i++) 
     {
@@ -57,10 +57,10 @@ message_package* CWebServer::DealData(client_information* pclient, int recv_len,
         if (NULL == ptr && '.' == purl[i]) ptr = &purl[i];
     }
     purl[url_len] = '\0';
-    //PrintDebug(pclient, purl);
+    PrintDebug(pclient, purl);
 
     //文件类型
-    ptype = (char *)malloc(6);
+    ptype = (char *)malloc(10);
     TestValueError(pclient, true, NULL == ptype, "type memory alloc in DealData is error");
     if (!ptr)
     {
@@ -74,7 +74,7 @@ message_package* CWebServer::DealData(client_information* pclient, int recv_len,
             free(ptype);
             purl = NULL; 
             ptype = NULL;
-            //PrintDebug(pclient, "file type error");
+            PrintDebug(pclient, "file type error");
             return CWebServer::CombineErrorPackage(pclient, BADREQUEST);
         }
         else
@@ -94,6 +94,7 @@ message_package* CWebServer::DealData(client_information* pclient, int recv_len,
         ptype[i] = *ptr;
     }
     ptype[i] = '\0';
+    PrintDebug(pclient, ptype);
     for (i = 0; i < SSIZE; i++)
     {
         if (!strcmp(TYPE[i], ptype)) break;
@@ -106,10 +107,9 @@ message_package* CWebServer::DealData(client_information* pclient, int recv_len,
         free(ptype);
         purl = NULL;
         ptype = NULL;
-        //PrintDebug(pclient, "file type error:have no this type");
+        PrintDebug(pclient, "file type error:have no this type");
         return CWebServer::CombineErrorPackage(pclient, BADREQUEST);
     }
-    //PrintDebug(pclient, ptype);
     //组合正确的包
     message_package * ptrmes = CWebServer::CombineCorrectPackage(pclient, purl, i);
     //释放空间

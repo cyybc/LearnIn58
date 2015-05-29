@@ -1,0 +1,2 @@
+ERROR  98 -1  2015-05-19 13:58:28 client_sockfd=-1  reason=server socket bind error
+ERROR  98 -1  2015-05-19 14:02:41 client_sockfd=-1  reason=server socket bind error

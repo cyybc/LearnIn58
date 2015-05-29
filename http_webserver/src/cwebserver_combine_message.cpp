@@ -17,7 +17,7 @@ message_package* CWebServer::CombineCorrectPackage(client_information* pclient, 
     in.seekg(0, ios::beg);
     mesLen = mesHeadLen  + mesBodyLen;
 
-    char* pmes = (char *)malloc(mesLen + BUFFSIZE);
+    char* pmes = (char *)malloc(mesLen + BUFFSIZE+1);
     TestValueError(pclient, true, NULL == pmes, "mes memory alloc error");
     pmes[0] = '\0';
     strcat(pmes, SUCCEED[num]);
@@ -30,12 +30,17 @@ message_package* CWebServer::CombineCorrectPackage(client_information* pclient, 
         //strcat(pmes, buffer);
         //读不是纯文本文件会出错，我猜是因为似乎内置的函数后面的buff是以'\0'为结尾进行复制的
         //比较复杂的非纯文本会有一些奇奇怪怪的东西，说不定就有\0但是却是用两个字符拼接来表示汉字的
-        for (unsigned int i = 0; i < sizeof(buffer); i++) pmes[mesHeadLen++] = buffer[i];
+        for (unsigned int i = 0; i < sizeof(buffer); i++) 
+        {
+             pmes[mesHeadLen++] = buffer[i];
+             if (mesHeadLen == mesLen) break;
+        }
+        if (mesHeadLen == mesLen) break;
     }
     pmes[mesLen] = '\0';
     //PrintDebug(pclient, "combine message over");
 
-    message_package* ptrmes = new message_package;
+    message_package* ptrmes = (message_package*)malloc(sizeof(message_package));
     ptrmes->pmes = pmes;
     ptrmes->mes_len = mesLen;
     
